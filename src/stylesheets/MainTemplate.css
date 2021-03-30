@@ -1,0 +1,102 @@
+.con {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.mainTemplate {
+    width: 360px;
+    height: 640px;
+    margin-top: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.topbar-wrapper {
+    height: 60px;
+    background-color: #A4C3FF;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.title {    
+    font-size: 28px;
+    font-weight: bold;    
+    cursor: pointer;
+}
+
+.share {
+    margin-top: 5px;
+    margin-left: 16px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu {    
+    margin-top: 5px;
+    font-size: 30px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.viewData-wrapper {
+    display:flex;
+    justify-content: space-between;
+    margin: 0 5px;
+    margin-top: 10px;
+}
+
+.vd-border {
+    border: 1px solid gray;
+    width: 100px;
+    height: 80px;
+}
+
+.vdkind {
+    text-align: center;
+    width: 100%;
+    font-weight: 700;  
+    font-size: 14px;  
+}
+
+.selectedKindExpreesion-wrapper {
+    border: 1px solid red;
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+}
+
+.comment-wrapper {    
+    margin: 0 5px;
+    margin-top: 5px;
+    height: 80px;
+    background-color: #c9c9c9;    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+}
+
+.comment {
+    font-weight: 600;
+}
+
+.viewDay-wrapper {
+    height: 20px;
+    display: flex;
+    justify-content: space-between;    
+    margin: 0 5px;
+    margin-top: 10px;    
+}
+
+.day {
+    border: 1px solid gray;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: 12px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
