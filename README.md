@@ -4,14 +4,16 @@
 npm install
 ```
 
-
-```
-npm intall chart.js
-```
 ```
 npm install react-router-dom
 ```
 
+## 차트 관련
+```
+npm intall chart.js
+```
+
+## 실행
 
 ```
 npm run start
