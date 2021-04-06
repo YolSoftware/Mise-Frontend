@@ -16,7 +16,7 @@ npm intall chart.js
 npm intall swiper
 ```
 ```
-npm install --save-dev node-sass
+npm install node-sass
 ```
 
 ## 실행
