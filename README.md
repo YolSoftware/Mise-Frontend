@@ -12,6 +12,12 @@ npm install react-router-dom
 ```
 npm intall chart.js
 ```
+```
+npm intall swiper
+```
+```
+npm install --save-dev node-sass
+```
 
 ## 실행
 
