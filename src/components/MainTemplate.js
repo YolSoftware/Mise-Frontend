@@ -13,7 +13,6 @@ import 'swiper/swiper.scss';
 // 1. 데이터 받아와서 보여주기
 // 2. 날짜 바뀌면 리렌더링하기
 
-
 const MainTemplate = ({ day, tommorow }) => {
     return (
         <main className="mainTemplate con">
@@ -53,14 +52,13 @@ const MainTemplate = ({ day, tommorow }) => {
 
             <Swiper
       spaceBetween={50}
-      slidesPerView={3}
+    //   slidesPerView={3}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>Slide 1</SwiperSlide>
       <SwiperSlide>Slide 2</SwiperSlide>
       <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
     </Swiper>
 
             </section>
