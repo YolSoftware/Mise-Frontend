@@ -5,7 +5,7 @@
 
 .mainTemplate {
     width: 360px;
-    height: 640px;
+    height: 1280px;
     margin-top: 20px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -28,7 +28,7 @@
 .share {
     margin-top: 5px;
     margin-left: 16px;
-    font-size: 30px;
+    font-size: 30px;    
     cursor: pointer;
 }
 
@@ -59,11 +59,64 @@
     font-size: 14px;  
 }
 
-.selectedKindExpreesion-wrapper {
-    border: 1px solid red;
+.expression {
+    width: 100%;
+    height: 40px;
+}
+
+.state {
+    width: 100%;
+    height: 20px;
+}
+
+.bottomBar {
+    margin-left: -1px;
+    width: 102%;
+    height: 10px;
+    background-color: #c9c9c9;
+    position: relative;
+}
+
+.bottomBar.active::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 102%;
+    height: 10px;
+    background-color: inherit;
+}
+
+.selectedKindExpreesion-wrapper {    
     margin-top: 10px;
     width: 100%;
-    height: 200px;
+    height: 240px;
+}
+
+.selectedKindExpreesion-wrapper .swiper-container {
+    width: 100%;
+    height: 240px;    
+}
+
+.selectedKindExpreesion-wrapper .swiper-container .swiper-button-prev.swiper-button-disabled,
+.selectedKindExpreesion-wrapper .swiper-container .swiper-button-next.swiper-button-disabled {        
+    display:none;
+}
+
+.selectedKindExpreesion-wrapper .swiper-container .swiper-slide {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.selectedKindExpreesion-wrapper .swiper-container .swiper-pagination-bullet-active {
+    background-color: #A4C3FF;
+}
+
+.selectedKindExpreesion-wrapper .swiper-container .swiper-button-next,
+.selectedKindExpreesion-wrapper .swiper-container .swiper-button-prev {
+    --swiper-navigation-size: 24px;
 }
 
 .comment-wrapper {    
@@ -71,6 +124,8 @@
     margin-top: 5px;
     height: 80px;
     background-color: #c9c9c9;    
+    border: 2px solid gray;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     display:flex;
     justify-content: center;
     align-items: center;
@@ -99,4 +154,49 @@
     justify-content: center;
     align-items: center;
     white-space: nowrap;
+}
+
+.hexagon-wrapper {
+    width: 100%;
+    height: 360px;    
+    margin-top: 40px;
+}
+
+.hexagon_day {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.hexagon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 240px;
+    margin-top: 30px;    
+}
+
+.footer-wrapper {
+    width: 100%;
+    height: 360px;
+    background-color: #e9e9e9;
+    text-align: center;
+}
+
+.search-box {
+    padding-top: 20px;
+}
+
+.search-box .box {
+    outline: none;
+    border: none;
+    width: 60%;
+    font-size: 16px;
+    text-align: center;
+    height: 36px;
+}
+
+.search-box .sb-icon {
+    font-size: 24px;
+    vertical-align: middle;
+    padding-left: 15px;
 }

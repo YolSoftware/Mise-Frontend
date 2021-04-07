@@ -1,13 +1,21 @@
 import React from 'react';
 import { IoShareSocial } from "react-icons/io5";
-import { VscMenu } from 'react-icons/vsc';
+import { VscMenu, VscSearch } from 'react-icons/vsc';
+import { FiHexagon } from 'react-icons/fi';
 import '../stylesheets/MainTemplate.css';
 
-// 해야할 것
-// 1. 데이터 받아와서 보여주기
-// 2. 날짜 바뀌면 리렌더링하기
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const MainTemplate = ({ day, tommorow }) => {
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+
+SwiperCore.use([Navigation, Pagination]);
+
+const MainTemplate = ({ day, tommorow, todayDate, fineDustData }) => {
     return (
         <main className="mainTemplate con">
             <section className="topbar-wrapper">
@@ -39,11 +47,20 @@ const MainTemplate = ({ day, tommorow }) => {
                     <div className="state ozoneState"></div>
                     <div className="bottomBar ozoneBottomBar"></div>
                 </div>
-            </section>
+            </section>            
 
             <section className="selectedKindExpreesion-wrapper">
-
+                <Swiper
+                    spaceBetween={50}      
+                    pagination={{ clickable: true }}  
+                    navigation                                        
+                    >
+                    <SwiperSlide className="slide1">{fineDustData}</SwiperSlide>
+                    <SwiperSlide className="slide2">Slide 2</SwiperSlide>
+                    <SwiperSlide className="slide3">Slide 3</SwiperSlide>
+                </Swiper>
             </section>
+            
             <section className="comment-wrapper">
                 <span className="comment">
                     마스크 착용!
@@ -56,6 +73,23 @@ const MainTemplate = ({ day, tommorow }) => {
                 <div className="today day">{day}</div>
                 <div className="tommorow day">{tommorow}</div>
                 <div className="??? day"></div>
+            </section>
+
+            <section className="hexagon-wrapper">
+                <div className="hexagon_day">{todayDate}</div>
+                <div className="hexagon">
+                    <FiHexagon />
+                </div>
+            </section>
+
+            <section className="footer-wrapper">
+                <div className="search-box">
+                    <div className="search">
+                        
+                        <input className="box" type="text" placeholder="검색어를 입력해주세요."></input>
+                        <VscSearch className="sb-icon" />                        
+                    </div>
+                </div>
             </section>
         </main>
     )
