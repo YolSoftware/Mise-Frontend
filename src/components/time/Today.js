@@ -6,8 +6,7 @@ const Today = () => {
 
     let day = new Date().toLocaleDateString(undefined, options);      
     
-    const [Curday, setCurday] = useState(day);
-    
+    const [curday, setCurday] = useState(day);    
 
     const updateDay = () => {
         day = new Date().toLocaleDateString(undefined, options);     
@@ -19,7 +18,7 @@ const Today = () => {
 
     return(
         <div>
-            오늘 {day}
+            오늘 {curday}
         </div>
     );
 }

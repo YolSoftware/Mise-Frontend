@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MainTemplate from './components/MainTemplate';
-import Today from './components/Today';
-import Tommorow from './components/Tommorow';
 import customAxios from './api/customAxios';
-import TodayDate from './components/TodayDate';
+import MyChart from './components/MyChart';
+import TimeModules from './components/TimeModules';
 
 import {
   BrowserRouter as Router,  
@@ -12,12 +11,7 @@ import {
 } from 'react-router-dom';
 
 // TodoList
-// 1. Today, TodayDate, Tommorow 하나로 만들기
-// 2. 육각형 직접 그려보기
-// 3. 선택된 슬라이드에 맞는 view 하단에 밑줄 추가
 // 4. footer 완성
-// 5. 현재 MainTemplate 에 전부 모여있음. 분리 할 수 있는거 분리하기
-// 6. 식이거랑 합치기
 
 function App() {
   return (
@@ -62,10 +56,11 @@ function Users() {
   return (
   
     <MainTemplate
-      day = {<Today />}
-      tommorow = {<Tommorow />}
-      todayDate = {<TodayDate />}
+      day = {<TimeModules.Today />}
+      tommorow = {<TimeModules.Tommorow />}
+      todayDate = {<TimeModules.TodayDate />}
       fineDustData = {test} 
+      MyChart = {<MyChart />}
     >
 
     </MainTemplate>
