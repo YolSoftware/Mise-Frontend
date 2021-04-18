@@ -43,6 +43,8 @@ function App() {
     let long;
     getLocation();
     getDate();
+
+    let postUrl = 'http://121.137.158.56:8080/api/misenow/locaion'
     function getLocation() {
       navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
@@ -61,35 +63,21 @@ function App() {
     // };
 
     // axios.get(url, sendParam);
-    axios.get('http://121.137.158.56:8080/api/misenow/locaion', {
-      params: {
-        latitude: lat,
-        longitude: long
-      }
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });  
+    //axios.post('http://121.137.158.56:8080/api/misenow/locaion');
 
     
-
-    // console.log("Result "+
-    // axios.get(, {
-    //   params: {
-
-    //   }
-    // })
-    // .then( response => { console.log(response) } )
-    // );
+    let mData = {
+        "latitude" : lat,
+        "longitude" : long
+    }
 
     // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
-    customAxios('/misenow/fineDust', callback, 'get');
+    customAxios('/misenow/fineDust', callback, 'GET', "");
+    customAxios('/misenow/location', callback, 'GET', mData);
+    customAxios('/misenow/location', callback, 'POST', mData);
+
+    // post
+    // customAxios('/misenow/locaion', callback, 'post', data);
 
   }, [])
   return (
