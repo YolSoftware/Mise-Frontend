@@ -56,10 +56,7 @@ function Users() {
   return (
   
     <MainTemplate
-      day = {<TimeModules.Today />}
-      tommorow = {<TimeModules.Tommorow />}
-      todayDate = {<TimeModules.TodayDate />}
-      fineDustData = {test} 
+      timeModules = {TimeModules}
       MyChart = {<MyChart />}
     >
 

@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 
-class TodayDate extends Component {
-
+class Tomorrow extends Component {
     state = {
-        date: new Date()
+        date: new Date(new Date().setDate(new Date().getDate() + 1)),
+        pm25Value : 1
     }
 
     render() {
         const { date } = this.state;
-
         let options = {
             month: 'long',
             day: 'numeric'
         };
-       
+
         return (
             <div>
                 {date.toLocaleDateString('ko-KR', options)}
@@ -22,4 +21,4 @@ class TodayDate extends Component {
     }
 }
 
-export default TodayDate;
+export default Tomorrow;
