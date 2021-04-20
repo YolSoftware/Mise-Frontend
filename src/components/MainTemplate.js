@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoShareSocial } from "react-icons/io5";
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import '../stylesheets/MainTemplate.css';
@@ -15,6 +15,14 @@ import 'swiper/components/pagination/pagination.scss';
 SwiperCore.use([Navigation, Pagination]);
 
 const MainTemplate = ({ timeModules, MyChart }) => {
+
+    const [currentSelectedDate, setCurrentSelectedDate] = useState('');
+
+    var onClickToday = () => {
+        console.log("hello world");        
+    };
+
+
     return (
         <main className="mainTemplate con">
             <section className="topbar-wrapper">
@@ -30,19 +38,19 @@ const MainTemplate = ({ timeModules, MyChart }) => {
             <section className="viewData-wrapper">
                 <div className="fineDust vd-border">
                     <div className="vdkind">미세먼지</div>
-                    <div className="expression fineDustExpreesion">{timeModules.Today.pm100Value}</div>
+                    <div className="expression fineDustExpreesion">{timeModules.today.pm100Value}</div>
                     <div className="state fineDustState"></div>
                     <div className="bottomBar fineDustBottomBar"></div>
                 </div>
                 <div className="microDust vd-border">
                     <div className="vdkind">초미세먼지</div>
-                    <div className="expression microDustExpreesion">{timeModules.Today.pm25Value}</div>
+                    <div className="expression microDustExpreesion">{timeModules.today.pm25Value}</div>
                     <div className="state microDustState"></div>
                     <div className="bottomBar microDustBottombar"></div>
                 </div>
                 <div className="ozone vd-border">
                     <div className="vdkind">오존</div>
-                    <div className="expression ozoneExpression"></div>
+                    <div className="expression ozoneExpression">{timeModules.today.o3Value}</div>
                     <div className="state ozoneState"></div>
                     <div className="bottomBar ozoneBottomBar"></div>
                 </div>
@@ -55,9 +63,9 @@ const MainTemplate = ({ timeModules, MyChart }) => {
                     navigation                                        
                     >
                         {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세 먼지로 보여줄지 에 대해서 */}
-                    <SwiperSlide className="slide1">{timeModules.Today.pm100Value}</SwiperSlide>
-                    <SwiperSlide className="slide2">Slide 2</SwiperSlide>
-                    <SwiperSlide className="slide3">Slide 3</SwiperSlide>
+                    <SwiperSlide className="slide1">{timeModules.today.pm100Value}</SwiperSlide>
+                    <SwiperSlide className="slide2">{timeModules.tomorrow.pm25Value}</SwiperSlide>
+                    <SwiperSlide className="slide3">{timeModules.dayAfterTomorrow.pm25Value}</SwiperSlide>
                 </Swiper>
             </section>
             
@@ -70,15 +78,15 @@ const MainTemplate = ({ timeModules, MyChart }) => {
             </section>
 
             <section className="viewDay-wrapper">
-                <div className="today day">{<timeModules.Today></timeModules.Today>}</div>
-                <div className="tomorrow day">{<timeModules.Tomorrow></timeModules.Tomorrow>}</div>
-                <div className="dayAfterTomorrow day">{<timeModules.dayAfterTomorrow></timeModules.dayAfterTomorrow>}</div>
+                <div onClick={() => { console.log("hello world1111"); }} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
+                <div className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
+                <div className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
             </section>
 
             <section className="chart-wrapper">
-                <div className="chart-day">{<timeModules.TodayDate></timeModules.TodayDate>}</div>
+                <div className="chart-day">{}</div>
                 <div className="chart">
-                    {MyChart}
+                    {/* {MyChart} */}
                 </div>
             </section>
 
@@ -87,12 +95,12 @@ const MainTemplate = ({ timeModules, MyChart }) => {
                     <div className="search">                        
                         <input className="box" type="text" placeholder="검색어를 입력해주세요."></input>
                         <VscSearch className="sb-icon" />                        
-                    </div>
+                    </div>``
                 </div>
                 <div className="footer-day">
-                    <div className="today day">{<timeModules.Today></timeModules.Today>}</div>
-                    <div className="tomorrow day">{<timeModules.Tomorrow></timeModules.Tomorrow>}</div>
-                    <div className="dayAfterTomorrow day">{<timeModules.dayAfterTomorrow></timeModules.dayAfterTomorrow>}</div>
+                    <div onClick={() => { console.log("hello world1111"); }} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
+                    <div className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
+                    <div className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
                 </div>
                 <div className="footer-view24hour">
                     <ul className="fv2h-list">

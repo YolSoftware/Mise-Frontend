@@ -1,9 +1,10 @@
 import Today from './time/Today';
 import Tomorrow from './time/Tomorrow';
 import TodayDate from './time/TodayDate';
-//import dayAfterTomorrow from './time/dayAfterTomorrow';
 
-const TimeModules = {
+// dummy data
+
+var TimeModules = {
     today : {
         date: new Date(),
         pm25Value: 1,
@@ -13,21 +14,15 @@ const TimeModules = {
         coValue : 5,
         so2Value : 6
     },
-
     tomorrow : {
         date: new Date(new Date().setDate(new Date().getDate() + 1)),
-        pm25Value : 10
+        pm25Value : 11
     },
 
     dayAfterTomorrow : {
         date: new Date(new Date().setDate(new Date().getDate() + 2)),
-        pm25Value : 20
+        pm25Value : 22
     }
-
-    // Today,
-    // Tomorrow,
-    // dayAfterTomorrow,
-    // TodayDate
 }
 
 export default TimeModules;

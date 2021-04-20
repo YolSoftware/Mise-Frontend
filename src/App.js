@@ -54,12 +54,10 @@ function Users() {
   );
 
   return (
-  
     <MainTemplate
       timeModules = {TimeModules}
       MyChart = {<MyChart />}
     >
-
     </MainTemplate>
 
   );
