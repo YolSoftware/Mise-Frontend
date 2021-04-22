@@ -3,6 +3,7 @@ import MainTemplate from './components/MainTemplate';
 import customAxios from './api/customAxios';
 import MyChart from './components/MyChart';
 import TimeModules from './components/TimeModules';
+import KakaoAPI from './api/KakaoAPI';
 
 import {
   BrowserRouter as Router,  
@@ -57,7 +58,8 @@ function Users() {
     <MainTemplate
       timeModules = {TimeModules}
       MyChart = {<MyChart />}
-    >
+      kakao = {<KakaoAPI />}
+    >      
     </MainTemplate>
 
   );

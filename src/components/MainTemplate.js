@@ -14,7 +14,7 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const MainTemplate = ({ timeModules, MyChart }) => {
+const MainTemplate = ({ timeModules, MyChart, kakao }) => {
 
     const [currentSelectedDate, setCurrentSelectedDate] = useState('');
 
@@ -27,7 +27,7 @@ const MainTemplate = ({ timeModules, MyChart }) => {
         <main className="mainTemplate con">
             <section className="topbar-wrapper">
                 <div className="share">
-                    <IoShareSocial />
+                    {kakao}
                 </div>
                 <div className="title"> 미세나우 </div>
                 <div className="menu">
@@ -86,7 +86,7 @@ const MainTemplate = ({ timeModules, MyChart }) => {
             <section className="chart-wrapper">
                 <div className="chart-day">{}</div>
                 <div className="chart">
-                    {/* {MyChart} */}
+                    {/* MyChart */}                    
                 </div>
             </section>
 
@@ -95,7 +95,8 @@ const MainTemplate = ({ timeModules, MyChart }) => {
                     <div className="search">                        
                         <input className="box" type="text" placeholder="검색어를 입력해주세요."></input>
                         <VscSearch className="sb-icon" />                        
-                    </div>``
+                    </div>
+                    
                 </div>
                 <div className="footer-day">
                     <div onClick={() => { console.log("hello world1111"); }} className="today day">{timeModules.today.date.toLocaleDateString()}</div>

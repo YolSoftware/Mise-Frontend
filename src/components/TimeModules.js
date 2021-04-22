@@ -1,7 +1,3 @@
-import Today from './time/Today';
-import Tomorrow from './time/Tomorrow';
-import TodayDate from './time/TodayDate';
-
 // dummy data
 
 var TimeModules = {
