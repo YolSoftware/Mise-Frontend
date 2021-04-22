@@ -37,16 +37,19 @@ body, ul, li {
 }
 
 .share {
-    margin-top: 5px;
-    margin-left: 16px;
-    font-size: 30px;    
-    cursor: pointer;
+    margin-top: 5px;    
+}
+
+.share #kakao-link-btn {
+    outline: 0;
+    border: 0;
+    background-color: #A4C3FF;
 }
 
 .menu {    
     margin-top: 5px;
     font-size: 30px;
-    margin-right: 16px;
+    width: 50px;
     cursor: pointer;
 }
 
