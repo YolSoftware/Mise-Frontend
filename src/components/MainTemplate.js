@@ -36,19 +36,19 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
             </section>
 
             <section className="viewData-wrapper">
-                <div className="fineDust vd-border">
+                <div className="fineDust vd-border card">
                     <div className="vdkind">미세먼지</div>
                     <div className="expression fineDustExpreesion">{timeModules.today.pm100Value}</div>
                     <div className="state fineDustState"></div>
                     <div className="bottomBar fineDustBottomBar"></div>
                 </div>
-                <div className="microDust vd-border">
+                <div className="microDust vd-border card">
                     <div className="vdkind">초미세먼지</div>
                     <div className="expression microDustExpreesion">{timeModules.today.pm25Value}</div>
                     <div className="state microDustState"></div>
                     <div className="bottomBar microDustBottombar"></div>
                 </div>
-                <div className="ozone vd-border">
+                <div className="ozone vd-border card">
                     <div className="vdkind">오존</div>
                     <div className="expression ozoneExpression">{timeModules.today.o3Value}</div>
                     <div className="state ozoneState"></div>
@@ -69,7 +69,7 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
                 </Swiper>
             </section>
             
-            <section className="comment-wrapper">
+            <section className="comment-wrapper card">
                 <span className="comment">
                     마스크 착용!
                     <br />
@@ -78,9 +78,9 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
             </section>
 
             <section className="viewDay-wrapper">
-                <div onClick={() => { console.log("hello world1111"); }} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
-                <div className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
-                <div className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
+                <div onClick={() => { console.log("hello world1111"); }} className="today day card">{timeModules.today.date.toLocaleDateString()}</div>
+                <div className="tomorrow day card">{timeModules.tomorrow.date.toLocaleDateString()}</div>
+                <div className="dayAfterTomorrow day card">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
             </section>
 
             <section className="chart-wrapper">
@@ -90,44 +90,49 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
                 </div>
             </section>
 
-            <section className="footer-wrapper">
-                <div className="search-box">
-                    <div className="search">                        
-                        <input className="box" type="text" placeholder="검색어를 입력해주세요."></input>
-                        <VscSearch className="sb-icon" />                        
-                    </div>
-                    
-                </div>
-                <div className="footer-day">
-                    <div onClick={() => { console.log("hello world1111"); }} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
-                    <div className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
-                    <div className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
-                </div>
-                <div className="footer-view24hour">
-                    <ul className="fv2h-list">
-                        <li className="morning fv2h-name">
-                            아침
-                            <ul className="morning-list">
-                                <li className="morning-state">
-                                    나쁨
-                                </li>
-                                <li className="morning-viewColor"></li>
-                            </ul>
-                        </li>
-                        <li className="lunch fv2h-name">
-                            점심
-                        </li>
-                        <li className="dinner fv2h-name">
-                            저녁
-                        </li>
-                        <li className="night fv2h-name">
-                            밤
-                        </li>
-                    </ul>
-                </div>
-            </section>
         </main>
     )
 }
 
 export default MainTemplate;
+
+/*
+
+<section className="footer-wrapper">
+    <div className="search-box">
+        <div className="search">                        
+            <input className="box" type="text" placeholder="검색어를 입력해주세요."></input>
+            <VscSearch className="sb-icon" />                        
+        </div>
+        
+    </div>
+    <div className="footer-day">
+        <div onClick={() => { console.log("hello world1111"); }} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
+        <div className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
+        <div className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
+    </div>
+    <div className="footer-view24hour">
+        <ul className="fv2h-list">
+            <li className="morning fv2h-name">
+                아침
+                <ul className="morning-list">
+                    <li className="morning-state">
+                        나쁨
+                    </li>
+                    <li className="morning-viewColor"></li>
+                </ul>
+            </li>
+            <li className="lunch fv2h-name">
+                점심
+            </li>
+            <li className="dinner fv2h-name">
+                저녁
+            </li>
+            <li className="night fv2h-name">
+                밤
+            </li>
+        </ul>
+    </div>
+</section>
+
+*/
