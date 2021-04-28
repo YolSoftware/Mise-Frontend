@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+mise/
+my-app/
 
 # testing
 /coverage

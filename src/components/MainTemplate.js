@@ -16,7 +16,7 @@ SwiperCore.use([Navigation, Pagination]);
 
 const MainTemplate = ({ timeModules, MyChart, kakao }) => {
 
-    const [currentSelectedDate, setCurrentSelectedDate] = useState('');
+    const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
 
     var onClickToday = () => {
         console.log("hello world");        
@@ -38,19 +38,19 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
             <section className="viewData-wrapper">
                 <div className="fineDust vd-border card">
                     <div className="vdkind">미세먼지</div>
-                    <div className="expression fineDustExpreesion">{timeModules.today.pm100Value}</div>
+                    <div className="expression fineDustExpreesion">{currentSelectedDate.pm100Value}</div>
                     <div className="state fineDustState"></div>
                     <div className="bottomBar fineDustBottomBar"></div>
                 </div>
                 <div className="microDust vd-border card">
                     <div className="vdkind">초미세먼지</div>
-                    <div className="expression microDustExpreesion">{timeModules.today.pm25Value}</div>
+                    <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value}</div>
                     <div className="state microDustState"></div>
                     <div className="bottomBar microDustBottombar"></div>
                 </div>
                 <div className="ozone vd-border card">
                     <div className="vdkind">오존</div>
-                    <div className="expression ozoneExpression">{timeModules.today.o3Value}</div>
+                    <div className="expression ozoneExpression">{currentSelectedDate.o3Value}</div>
                     <div className="state ozoneState"></div>
                     <div className="bottomBar ozoneBottomBar"></div>
                 </div>
@@ -78,9 +78,9 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
             </section>
 
             <section className="viewDay-wrapper">
-                <div onClick={() => { console.log("hello world1111"); }} className="today day card">{timeModules.today.date.toLocaleDateString()}</div>
-                <div className="tomorrow day card">{timeModules.tomorrow.date.toLocaleDateString()}</div>
-                <div className="dayAfterTomorrow day card">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.today)} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.tomorrow)} className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.dayAfterTomorrow)} className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
             </section>
 
             <section className="chart-wrapper">
@@ -89,7 +89,6 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
                     {/* MyChart */}                    
                 </div>
             </section>
-
         </main>
     )
 }

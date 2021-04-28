@@ -61,9 +61,7 @@ function Users() {
       kakao = {<KakaoAPI />}
     >      
     </MainTemplate>
-
   );
-
 }
 
 export default App;

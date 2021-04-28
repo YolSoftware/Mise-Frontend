@@ -12,12 +12,12 @@ var TimeModules = {
     },
     tomorrow : {
         date: new Date(new Date().setDate(new Date().getDate() + 1)),
-        pm25Value : 11
+        pm25Value : 20
     },
 
     dayAfterTomorrow : {
         date: new Date(new Date().setDate(new Date().getDate() + 2)),
-        pm25Value : 22
+        pm25Value : 100
     }
 }
 
