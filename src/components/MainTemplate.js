@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoShareSocial } from "react-icons/io5";
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import '../stylesheets/MainTemplate.css';
+import logo from '../api/image/logo.png';
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination } from 'swiper';
@@ -14,7 +15,7 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const MainTemplate = ({ timeModules, MyChart, kakao }) => {
+const MainTemplate = ({ test, timeModules, MyChart, kakao }) => {
 
     const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
 
@@ -25,17 +26,17 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
 
     return (
         <main className="mainTemplate con">
-            <section className="topbar-wrapper">
+            <section className="topbar-wrapper bd-bt">
                 <div className="share">
                     {kakao}
                 </div>
                 <div className="title"> 미세나우 </div>
                 <div className="menu">
-                    <VscMenu />
+                    <img src={logo} />
                 </div>
             </section>
 
-            <section className="viewData-wrapper">
+            <section className="viewData-wrapper bd-bt con">
                 <div className="fineDust vd-border card">
                     <div className="vdkind">미세먼지</div>
                     <div className="expression fineDustExpreesion">{currentSelectedDate.pm100Value}</div>
@@ -56,7 +57,7 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
                 </div>
             </section>            
 
-            <section className="selectedKindExpreesion-wrapper">
+            <section className="selectedKindExpreesion-wrapper bd-bt">
                 <Swiper
                     spaceBetween={50}      
                     pagination={{ clickable: true }}  
@@ -69,24 +70,25 @@ const MainTemplate = ({ timeModules, MyChart, kakao }) => {
                 </Swiper>
             </section>
             
-            <section className="comment-wrapper card">
+            <section className="comment-wrapper card con">
                 <span className="comment">
                     마스크 착용!
                     <br />
                     더 심해질 예정입니다.
+                    {test}
                 </span>
             </section>
 
-            <section className="viewDay-wrapper">
-                <div onClick={() => setCurrentSelectedDate(timeModules.today)} className="today day">{timeModules.today.date.toLocaleDateString()}</div>
-                <div onClick={() => setCurrentSelectedDate(timeModules.tomorrow)} className="tomorrow day">{timeModules.tomorrow.date.toLocaleDateString()}</div>
-                <div onClick={() => setCurrentSelectedDate(timeModules.dayAfterTomorrow)} className="dayAfterTomorrow day">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
+            <section className="viewDay-wrapper bd-tp con">
+                <div onClick={() => setCurrentSelectedDate(timeModules.today)} className="today day card">{timeModules.today.date.toLocaleDateString()}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.tomorrow)} className="tomorrow day card">{timeModules.tomorrow.date.toLocaleDateString()}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.dayAfterTomorrow)} className="dayAfterTomorrow day card">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
             </section>
 
             <section className="chart-wrapper">
                 <div className="chart-day">{}</div>
                 <div className="chart">
-                    {/* MyChart */}                    
+                    {/* MyChart */}
                 </div>
             </section>
         </main>

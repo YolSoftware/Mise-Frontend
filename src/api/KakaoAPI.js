@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import kakao from './image/kakao.png';
+import logo from './image/logo.png';
 
 class KakaoAPI extends Component {
   componentDidMount() {
@@ -9,8 +10,8 @@ class KakaoAPI extends Component {
       container: '#kakao-link-btn',
       objectType: 'feed',
       content: {
-        title: '딸기 치즈 케익',
-        description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+        title: '미세나우',
+        description: '지금 미세먼지 상황을 보세요!',
         imageUrl: 'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
         link: {
           mobileWebUrl: 'https://cheonmro.github.io/',

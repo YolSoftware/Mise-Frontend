@@ -1,6 +1,10 @@
+/* 기본설정 */
+
 body, ul, li {
     list-style: none;
 }
+
+/* 라이브러리 */
 
 .con {
     margin-left:auto;
@@ -9,25 +13,37 @@ body, ul, li {
 
 .card {
     background: rgb(255, 255, 255);
-    border: 1px solid gray;
+    border: 1px solid #e9e9e9;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: -1;
     padding: 12px;
     border-radius: 16px;
-    margin-bottom: 18px;    
+    margin-bottom: 18px;
 }
 
+.bd-bt {
+    border-bottom: 8px solid rgb(243, 244, 245);
+}
+
+.bd-tp {
+    border-top: 8px solid rgb(243, 244, 245);
+}
+
+/* 커스텀 */
+
+/* 탑바 */
 
 .mainTemplate {
     width: 360px;
     height: 1030px;
     margin-top: 20px;
     margin-bottom: 50px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);    
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .topbar-wrapper {
-    height: 60px;    
+    width: 100%;
+    height: 60px;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -38,12 +54,12 @@ body, ul, li {
 
 .title {    
     font-size: 28px;
-    font-weight: bold;    
-    cursor: pointer;   
+    font-weight: bold;
 }
 
 .share {
-    margin-top: 5px;    
+    margin-top: 5px;
+    cursor: pointer;
 }
 
 .share #kakao-link-btn {
@@ -52,18 +68,18 @@ body, ul, li {
     background-color: white;
 }
 
-.menu {    
+.menu {
     margin-top: 5px;
-    font-size: 30px;
-    width: 50px;
-    cursor: pointer;
+    margin-right: 5px;
 }
+
+/* 데이터 3개 보여주는 부분 */
 
 .viewData-wrapper {
     display:flex;
-    justify-content: space-between;
-    margin: 0 5px;
+    justify-content: space-between;    
     margin-top: 10px;
+    width: 100%;
 }
 
 .vd-border {
@@ -137,6 +153,9 @@ body, ul, li {
     height: 8px;
 }
 */
+
+/* 까마귀 이미지 나오는 곳  */
+
 .selectedKindExpreesion-wrapper {    
     margin-top: 10px;
     width: 100%;
@@ -169,11 +188,12 @@ body, ul, li {
     --swiper-navigation-size: 24px;
 }
 
+/* 코멘트 나오는 곳 */
+
 .comment-wrapper {    
-    margin: 0 5px;
-    margin-top: 5px;
+    margin: 15px 0;
     height: 80px;
-    background-color: #c9c9c9;
+    background-color: #e9e9e9;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -184,12 +204,18 @@ body, ul, li {
     font-weight: 600;
 }
 
+/* 하단 날짜 보여주는 곳 */
+
 .viewDay-wrapper, .footer-day {
     height: 20px;
     display: flex;
     justify-content: space-between;    
-    margin: 0 5px;
-    margin-top: 10px;    
+    margin-top: 10px;
+    width: 100%;
+}
+
+.viewDay-wrapper {
+    padding-top: 5px;
 }
 
 .day {    
@@ -203,6 +229,8 @@ body, ul, li {
     white-space: nowrap;
     margin: 0 3px;
 }
+
+/* 육각형 */
 
 .chart-wrapper {
     width: 100%;
@@ -223,6 +251,8 @@ body, ul, li {
     height: 60%;    
     margin-top: 40px;    
 }
+
+/* 하단부분 */
 
 .footer-wrapper {
     width: 100%;
@@ -262,7 +292,7 @@ body, ul, li {
     cursor: pointer;
 }
 
-.footer-day .day {    
+.viewDay-wrapper .day, .footer-day .day {    
     z-index: 1;
     height: 16px;
     margin-top: 10px;
