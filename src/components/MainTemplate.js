@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { IoShareSocial } from "react-icons/io5";
-import { VscMenu, VscSearch } from 'react-icons/vsc';
 import '../stylesheets/MainTemplate.css';
 import logo from '../api/image/logo.png';
+import classNames from 'classnames';
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination } from 'swiper';
@@ -18,6 +17,7 @@ SwiperCore.use([Navigation, Pagination]);
 const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }) => {
 
     const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
+    const [activeId, setActiveId] = useState(0);
 
     var onClickToday = () => {
         console.log("hello world");        
@@ -25,6 +25,10 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
 
     var convertDate = (mData) => {
         return mData.toLocaleDateString('ko-KR', {weekday: 'long',});
+    }
+
+    const changeSlide = (realIndex) => {
+        setActiveId(realIndex)
     }
 
     return (
@@ -43,20 +47,32 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
                 <div className="fineDust vd-border card">
                     <div className="vdkind">미세먼지</div>
                     <div className="expression fineDustExpreesion">{currentSelectedDate.pm10Value} μg/㎥</div>
-                    <div className="state fineDustState">{currentSelectedDate.pm10Grade}</div>
-                    <div className="bottomBar fineDustBottomBar"></div>
+                    <div className="state fineDustState">{currentSelectedDate.pm10Grade[0]}</div>
+                    <div className="bottomBar fineDustBottomBar">
+                        <div className={currentSelectedDate.pm10Grade[1]}>
+                            <div className={activeId === 0 ? 'active' : ''}></div>
+                        </div>
+                    </div>
                 </div>
                 <div className="microDust vd-border card">
                     <div className="vdkind">초미세먼지</div>
                     <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value} μg/㎥</div>
-                    <div className="state microDustState">{currentSelectedDate.pm25Grade}</div>
-                    <div className="bottomBar microDustBottombar"></div>
+                    <div className="state microDustState">{currentSelectedDate.pm25Grade[0]}</div>
+                    <div className="bottomBar microDustBottombar">
+                    <div className={currentSelectedDate.pm25Grade[1]}>
+                            <div className={activeId === 1 ? 'active' : ''}></div>
+                        </div>
+                    </div>
                 </div>
                 <div className="ozone vd-border card">
                     <div className="vdkind">오존</div>
                     <div className="expression ozoneExpression">{currentSelectedDate.o3Value} ppm</div>
-                    <div className="state ozoneState">{currentSelectedDate.o3Grade}</div>
-                    <div className="bottomBar ozoneBottomBar"></div>
+                    <div className="state ozoneState">{currentSelectedDate.o3Grade[0]}</div>
+                    <div className="bottomBar ozoneBottomBar">
+                    <div className={currentSelectedDate.o3Grade[1]}>
+                            <div className={activeId === 2 ? 'active' : ''}></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -64,7 +80,8 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
                 <Swiper
                     spaceBetween={50}      
                     pagination={{ clickable: true }}  
-                    navigation                                        
+                    navigation
+                    onSlideChange={(e) => changeSlide(e.realIndex)}
                     >
                         {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세먼지로 보여줄지 에 대해서 */}
                     <SwiperSlide className="slide1">{stateImage}</SwiperSlide>
