@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import MainTemplate from './components/MainTemplate';
 import customAxios from './api/customAxios';
-import MyChart from './components/MyChart';
-import TimeModules from './components/TimeModules';
 import KakaoAPI from './api/KakaoAPI';
+import MainTemplate from './components/MainTemplate';
+import TimeModules from './components/TimeModules';
+import MyChart from './components/MyChart';
+import StateImage from './components/StateImage';
+import Comment from './components/Comment';
 
 import {
   BrowserRouter as Router,  
   Route,
   Link
 } from 'react-router-dom';
-
-// TodoList
-// 4. footer 완성
 
 function App() {
   return (
@@ -61,6 +60,8 @@ function Users() {
       MyChart = {<MyChart />}
       kakao = {<KakaoAPI />}
       test = {test}
+      stateImage = {StateImage}
+      comment = {<Comment />}
     >
     </MainTemplate>
   );

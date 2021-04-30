@@ -1,0 +1,12 @@
+.comment-wrapper {
+    width: 92.5%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.comment {
+    font-weight: 600;
+}

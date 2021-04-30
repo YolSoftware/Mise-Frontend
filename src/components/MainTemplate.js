@@ -15,14 +15,13 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const MainTemplate = ({ test, timeModules, MyChart, kakao }) => {
+const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }) => {
 
     const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
 
     var onClickToday = () => {
         console.log("hello world");        
     };
-
 
     return (
         <main className="mainTemplate con">
@@ -55,7 +54,7 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao }) => {
                     <div className="state ozoneState"></div>
                     <div className="bottomBar ozoneBottomBar"></div>
                 </div>
-            </section>            
+            </section>
 
             <section className="selectedKindExpreesion-wrapper bd-bt">
                 <Swiper
@@ -63,20 +62,15 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao }) => {
                     pagination={{ clickable: true }}  
                     navigation                                        
                     >
-                        {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세 먼지로 보여줄지 에 대해서 */}
-                    <SwiperSlide className="slide1">{timeModules.today.pm100Value}</SwiperSlide>
+                        {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세먼지로 보여줄지 에 대해서 */}
+                    <SwiperSlide className="slide1">{stateImage}</SwiperSlide>
                     <SwiperSlide className="slide2">{timeModules.tomorrow.pm25Value}</SwiperSlide>
                     <SwiperSlide className="slide3">{timeModules.dayAfterTomorrow.pm25Value}</SwiperSlide>
                 </Swiper>
             </section>
             
             <section className="comment-wrapper card con">
-                <span className="comment">
-                    마스크 착용!
-                    <br />
-                    더 심해질 예정입니다.
-                    {test}
-                </span>
+                   {comment}
             </section>
 
             <section className="viewDay-wrapper bd-tp con">

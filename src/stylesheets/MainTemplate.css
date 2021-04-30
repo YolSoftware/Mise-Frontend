@@ -159,12 +159,12 @@ body, ul, li {
 .selectedKindExpreesion-wrapper {    
     margin-top: 10px;
     width: 100%;
-    height: 240px;
+    height: 360px;
 }
 
 .selectedKindExpreesion-wrapper .swiper-container {
     width: 100%;
-    height: 240px;    
+    height: 360px;
 }
 
 .selectedKindExpreesion-wrapper .swiper-container .swiper-button-prev.swiper-button-disabled,
@@ -194,14 +194,6 @@ body, ul, li {
     margin: 15px 0;
     height: 80px;
     background-color: #e9e9e9;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;    
-}
-
-.comment {
-    font-weight: 600;
 }
 
 /* 하단 날짜 보여주는 곳 */
