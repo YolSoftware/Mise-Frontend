@@ -23,6 +23,10 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
         console.log("hello world");        
     };
 
+    var convertDate = (mData) => {
+        return mData.toLocaleDateString('ko-KR', {weekday: 'long',});
+    }
+
     return (
         <main className="mainTemplate con">
             <section className="topbar-wrapper bd-bt">
@@ -38,20 +42,20 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
             <section className="viewData-wrapper bd-bt con">
                 <div className="fineDust vd-border card">
                     <div className="vdkind">미세먼지</div>
-                    <div className="expression fineDustExpreesion">{currentSelectedDate.pm100Value}</div>
-                    <div className="state fineDustState"></div>
+                    <div className="expression fineDustExpreesion">{currentSelectedDate.pm10Value} μg/㎥</div>
+                    <div className="state fineDustState">{currentSelectedDate.pm10Grade}</div>
                     <div className="bottomBar fineDustBottomBar"></div>
                 </div>
                 <div className="microDust vd-border card">
                     <div className="vdkind">초미세먼지</div>
-                    <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value}</div>
-                    <div className="state microDustState"></div>
+                    <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value} μg/㎥</div>
+                    <div className="state microDustState">{currentSelectedDate.pm25Grade}</div>
                     <div className="bottomBar microDustBottombar"></div>
                 </div>
                 <div className="ozone vd-border card">
                     <div className="vdkind">오존</div>
-                    <div className="expression ozoneExpression">{currentSelectedDate.o3Value}</div>
-                    <div className="state ozoneState"></div>
+                    <div className="expression ozoneExpression">{currentSelectedDate.o3Value} ppm</div>
+                    <div className="state ozoneState">{currentSelectedDate.o3Grade}</div>
                     <div className="bottomBar ozoneBottomBar"></div>
                 </div>
             </section>
@@ -74,9 +78,9 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
             </section>
 
             <section className="viewDay-wrapper bd-tp con">
-                <div onClick={() => setCurrentSelectedDate(timeModules.today)} className="today day card">{timeModules.today.date.toLocaleDateString()}</div>
-                <div onClick={() => setCurrentSelectedDate(timeModules.tomorrow)} className="tomorrow day card">{timeModules.tomorrow.date.toLocaleDateString()}</div>
-                <div onClick={() => setCurrentSelectedDate(timeModules.dayAfterTomorrow)} className="dayAfterTomorrow day card">{timeModules.dayAfterTomorrow.date.toLocaleDateString()}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.today)} className="today day card">{convertDate(timeModules.today.date)}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.tomorrow)} className="tomorrow day card">{convertDate(timeModules.tomorrow.date)}</div>
+                <div onClick={() => setCurrentSelectedDate(timeModules.dayAfterTomorrow)} className="dayAfterTomorrow day card">{convertDate(timeModules.dayAfterTomorrow.date)}</div>
             </section>
 
             <section className="chart-wrapper">
