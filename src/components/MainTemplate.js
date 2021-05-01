@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import '../stylesheets/MainTemplate.css';
 import logo from '../api/image/logo.png';
+import Comment from '../components/Comment';
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+// import css
+import '../stylesheets/StateImage.css';
 
 // Import Swiper styles
 import 'swiper/swiper.scss';
@@ -13,17 +17,63 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }) => {
+const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment }) => {
 
     const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
     const [activeId, setActiveId] = useState(0);
+
+    var nullCheck = (mData) => {
+        if (mData === null | mData === 0) {
+            return "";
+        }
+    }
+
+    function returnProperCss(mGrade) {
+        let ret;
+        if (mGrade == "매우나쁨") {
+            ret = "muchBad";
+        }
+        else if (mGrade == "나쁨") {
+            ret = "bad";
+        }
+        else if (mGrade == "보통") {
+            ret = "common";
+        }
+        else if (mGrade == "좋음") {
+            ret = "good";
+        }
+        else {
+            ret = "error";
+        }
+        return ret;
+    }
 
     var onClickToday = () => {
         console.log("hello world");        
     };
 
-    var convertDate = (mData) => {
-        return mData.toLocaleDateString('ko-KR', {weekday: 'long',});
+    var convertDate = (mDate) => {
+        return mDate.toLocaleDateString('ko-KR', {weekday: 'long',});
+    }
+
+    var selectImage = (mState) => {
+        let ret;
+        if (mState == "매우나쁨") {
+            ret = stateImages.muchBadImage;
+        }
+        else if (mState == "나쁨") {
+            ret = stateImages.badImage;
+        }
+        else if (mState == "보통") {
+            ret = stateImages.commonImage;
+        }
+        else if (mState == "좋음") {
+            ret = stateImages.goodImage;
+        }
+        else {
+            ret = "";
+        }
+        return ret;
     }
 
     const changeSlide = (realIndex) => {
@@ -45,30 +95,48 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
             <section className="viewData-wrapper bd-bt con">
                 <div className="fineDust vd-border card">
                     <div className="vdkind">미세먼지</div>
-                    <div className="expression fineDustExpreesion">{currentSelectedDate.pm10Value} μg/㎥</div>
-                    <div className="state fineDustState">{currentSelectedDate.pm10Grade[0]}</div>
+                    <div className="expression fineDustExpreesion">{currentSelectedDate.pm10Value}
+                    {
+                        currentSelectedDate == timeModules.today
+                        ? <span>μg/㎥</span>
+                        : ""
+                    }
+                    </div>
+                    <div className="state fineDustState">{currentSelectedDate.pm10Grade}</div>
                     <div className="bottomBar fineDustBottomBar">
-                        <div className={currentSelectedDate.pm10Grade[1]}>
+                        <div className={returnProperCss(currentSelectedDate.pm10Grade)}>
                             <div className={activeId === 0 ? 'active' : ''}></div>
                         </div>
                     </div>
                 </div>
                 <div className="microDust vd-border card">
                     <div className="vdkind">초미세먼지</div>
-                    <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value} μg/㎥</div>
-                    <div className="state microDustState">{currentSelectedDate.pm25Grade[0]}</div>
+                    <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value}
+                    {
+                        currentSelectedDate == timeModules.today
+                        ? <span>μg/㎥</span>
+                        : ""
+                    }
+                    </div>
+                    <div className="state microDustState">{currentSelectedDate.pm25Grade}</div>
                     <div className="bottomBar microDustBottombar">
-                    <div className={currentSelectedDate.pm25Grade[1]}>
+                    <div className={returnProperCss(currentSelectedDate.pm25Grade)}>
                             <div className={activeId === 1 ? 'active' : ''}></div>
                         </div>
                     </div>
                 </div>
                 <div className="ozone vd-border card">
                     <div className="vdkind">오존</div>
-                    <div className="expression ozoneExpression">{currentSelectedDate.o3Value} ppm</div>
-                    <div className="state ozoneState">{currentSelectedDate.o3Grade[0]}</div>
+                    <div className="expression ozoneExpression">{currentSelectedDate.o3Value}
+                    {
+                        currentSelectedDate == timeModules.today
+                        ? <span>ppm</span>
+                        : ""
+                    }
+                    </div>
+                    <div className="state ozoneState">{currentSelectedDate.o3Grade}</div>
                     <div className="bottomBar ozoneBottomBar">
-                    <div className={currentSelectedDate.o3Grade[1]}>
+                    <div className={returnProperCss(currentSelectedDate.o3Grade)}>
                             <div className={activeId === 2 ? 'active' : ''}></div>
                         </div>
                     </div>
@@ -83,14 +151,21 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
                     onSlideChange={(e) => changeSlide(e.realIndex)}
                     >
                         {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세먼지로 보여줄지 에 대해서 */}
-                    <SwiperSlide className="slide1">{stateImage}</SwiperSlide>
-                    <SwiperSlide className="slide2">{timeModules.tomorrow.pm25Value}</SwiperSlide>
-                    <SwiperSlide className="slide3">{timeModules.dayAfterTomorrow.pm25Value}</SwiperSlide>
+                    <SwiperSlide className="slide1"><div className="image-wrapper"><img src={selectImage(currentSelectedDate.pm10Grade)} className="image"/></div></SwiperSlide>
+                    <SwiperSlide className="slide2"><div className="image-wrapper"><img src={selectImage(currentSelectedDate.pm25Grade)} className="image"/></div></SwiperSlide>
+                    <SwiperSlide className="slide3"><div className="image-wrapper"><img src={selectImage(currentSelectedDate.o3Grade)} className="image"/></div></SwiperSlide>
                 </Swiper>
             </section>
             
             <section className="comment-wrapper card con">
-                   {comment}
+                {
+                    console.log("currentSelectedDate.pm10Grade" + currentSelectedDate.pm10Grade)
+                }
+                <Comment
+                        pPm10Grade = {currentSelectedDate.pm10Grade}
+                        pPm25Grade = {currentSelectedDate.pm25Grade}
+                        pO3Grade = {currentSelectedDate.o3Grade}
+                        />
             </section>
 
             <section className="viewDay-wrapper bd-tp con">
@@ -102,7 +177,7 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImage, comment }
             <section className="chart-wrapper">
                 <div className="chart-day">{}</div>
                 <div className="chart">
-                    {/* MyChart */}
+                    {MyChart}
                 </div>
             </section>
         </main>

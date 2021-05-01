@@ -37,7 +37,7 @@ const data = [
   }
 ]
 
-function MyChart() {
+const MyChart = () => {
 
   return (
     <div className="myChart">

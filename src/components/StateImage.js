@@ -1,13 +1,14 @@
 import React from 'react';
+import bad from '../stateImage/bad.png';
+import common from '../stateImage/common.png';
 import good from '../stateImage/good.png';
-import '../stylesheets/StateImage.css';
+import muchBad from '../stateImage/muchBad.png';
 
-const StateImage = () => {
-    return (
-        <div className="image-wrapper">
-            <img src={good} className="image"/>
-        </div>
-    )
+const stateImages = {
+    muchBadImage : muchBad,
+    badImage : bad,
+    commonImage : common,
+    goodImage : good
 }
 
-export default StateImage;
+export default stateImages;
