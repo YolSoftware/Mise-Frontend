@@ -10,34 +10,34 @@ import { ResponsiveRadar } from '@nivo/radar'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-const data = [
-  {
-    "name": "미세먼지",
-    "value": 90
-  },
-  {
-    "name": "일산화탄소",
-    "value": 73
-  },
-  {
-    "name": "아황산가스",
-    "value": 119
-  },
-  {
-    "name": "이산화질소",
-    "value": 63
-  },
-  {
-    "name": "오존",
-    "value": 95
-  },
-  {
-    "name": "초미세먼지",
-    "value": 95
-  }
-]
+const MyChart = ({dustData}) => {
 
-const MyChart = () => {
+  const data = [
+    {
+      "name": "미세먼지",
+      "value": dustData.today.pm10Value
+    },
+    {
+      "name": "일산화탄소",
+      "value": dustData.today.coValue * 100
+    },
+    {
+      "name": "아황산가스",
+      "value": dustData.today.so2Value * 10000
+    },
+    {
+      "name": "이산화질소",
+      "value": dustData.today.no2Value * 1000
+    },
+    {
+      "name": "오존",
+      "value": dustData.today.o3Value * 100
+    },
+    {
+      "name": "초미세먼지",
+      "value": dustData.today.pm25Value
+    }
+  ]
 
   return (
     <div className="myChart">

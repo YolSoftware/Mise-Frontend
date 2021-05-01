@@ -15,6 +15,41 @@ import {
   Link
 } from 'react-router-dom';
 
+// var mData;
+// function logging() {
+//   var lat;
+//   var long;
+//   navigator.geolocation.getCurrentPosition(function(position) {
+//     var lat = position.coords.latitude;
+//     var long = position.coords.longitude;
+//     console.log("Latitude is11 :", lat);
+//     console.log("Longitude is11 :", long);
+
+//     var location = {
+//       latitude : lat,
+//       longitude : long
+//     }
+//     customAxios('/misenow/fineDust', callback, 'post', location);
+//   });
+
+//   function callback(data) {
+//     var mData = data;
+//     console.log("Callback");
+//     console.log(mData);
+//     // console.log("Test data")
+//     // console.log(data);
+
+//     // setDustData(data);
+//     // setDustData(data.today);
+//     // setDustData(data.tomorrow);
+//     // console.log("Test dustData ");
+//     // console.log(dustData);
+//   }
+//   console.log("hello world");
+// }
+
+// logging();
+
 function App() {
   return (
     <Router>
@@ -40,79 +75,75 @@ function App() {
 
 function Users() {
   // 상태 설정
+  var mData;
   const [test, setTest] = useState('');  
   const [dustData, setDustData] = useState("");
-  
-  // 콜백 함수 설정
-  function callback(data) {
-    console.log(data);
-    // data.today.date = new Date();
-    // data.tommorow.date = new Date(new Date().setDate(new Date().getDate() + 1));
-    // data.dayAfterTommorow.date = new Date(new Date().setDate(new Date().getDate() + 2));
-    setDustData(data);
-  }
+  const [apiSuccess, setApiSuccess] = useState(false);
 
-  // 첫번째 렌더링을 다 마친 후 실행합니다.
-  useEffect(
-    () => {
-      var lat;
-      var long;
-  
-      navigator.geolocation.getCurrentPosition(function(position) {
-        lat = position.coords.latitude;
-        long = position.coords.longitude;
-        console.log("Latitude is11 :", lat);
-        console.log("Longitude is11 :", long);
+  const fetchDatas = async () => {
+    //setDustData(TimeModules);
 
-      });
+    console.log("123");
+    console.log(dustData);
+    console.log("123");
 
-      //let postUrl = 'http://121.137.158.56:8080/api/misenow/locaion'
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude;
+      var long = position.coords.longitude;
+      console.log("Latitude is11 :", lat);
+      console.log("Longitude is11 :", long);
 
-      lat = 37.208499499999995;
-      long = 127.06405760000001;
       let mData = {
         latitude : lat,
         longitude : long
       }
-
-
-      console.log("Latitude is :", lat);
-      console.log("Longitude is :", long);
-
-      console.log("Latitude is :", mData.latitude);
-      console.log("Longitude is :", mData.longitude);
-
       customAxios('/misenow/fineDust', callback, 'post', mData);
-      //axios.post('http://121.137.158.56:8080/api/misenow/fineDust');
-  
-      // let url = 'http://121.137.158.56:8080/api/misenow/locaion';
-      // let sendParam = {
-      //   latitude: lat,
-      //   longitude: long
-      // };
-  
-      // axios.get(url, sendParam);
-      //axios.post('http://121.137.158.56:8080/api/misenow/locaion');
-  
-      // customAxios('/misenow/location', callback, 'POST', mData);
+    });
 
-      
-      // // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
-      // customAxios('/misenow/fineDust', callback, 'post', mData);
-    }, []
-  );
+    function callback(data) {
+      console.log("Test data")
+      console.log(data);
 
-  console.log(test);
+      setDustData(data);
+      setApiSuccess(true);
 
+      console.log("Test dustData ");
+      console.log(dustData);
+    }
+  };
+  
+  useEffect(() => {
+     console.log("useEffect");
+
+      fetchDatas();
+  },[]);
+
+  useEffect(() => {
+    console.log("Test dustData use Efftect");
+    console.log(dustData);
+  },[dustData]);
+
+  // console.log("TEST");
+  // console.log(mData);
   return (
-    <MainTemplate
-      timeModules = {TimeModules}
-      MyChart = {<MyChart  />}
-      // dustData = {dustData}
-      kakao = {<KakaoAPI />}
-      stateImages = {stateImages}
-    >
-    </MainTemplate>
+    <div>
+      {
+        apiSuccess === true
+        ?
+        <MainTemplate
+        timeModules = {dustData}
+        MyChart = {<MyChart
+          dustData = {dustData}
+        />}
+        // dustData = {dustData}
+        kakao = {<KakaoAPI />}
+        stateImages = {stateImages}
+      >
+      </MainTemplate>
+        :
+        ""
+      }
+    </div>
   );
 }
 

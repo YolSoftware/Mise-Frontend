@@ -23,7 +23,11 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
     const [activeId, setActiveId] = useState(0);
     const [visibleChart, setVisibleChart] = useState('visible');
     const [slideState, setSlideState] = useState('commonState');
-    const [tempActiveId, setTempActiveId] = useState(0);
+
+    // Javascript 순수한 Date 객체를 만든다.
+    function makePureDate(mYear, mMonth, mDay) {
+        return new Date(mYear, mMonth - 1, mDay);
+    }
 
     function returnProperCss(mGrade) {
         let ret;
@@ -53,7 +57,6 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
             setTempActiveId(activeId);
         }
         */
-
         if(index === 0) {
             setSlideState('commonState');
             setVisibleChart('visible');
@@ -65,9 +68,6 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
         }
     }
 
-    var onClickToday = () => {
-        console.log("hello world");        
-    };
 
     var convertDate = (mDate) => {
         return mDate.toLocaleDateString('ko-KR', {weekday: 'long',});
@@ -99,6 +99,8 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
 
     return (
         <main className="mainTemplate con">
+            <div className="page-wrapper">
+
             <section className="topbar-wrapper bd-bt">
                 <div className="share">
                     {kakao}
@@ -129,11 +131,13 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
                 <div className="microDust vd-border card">
                     <div className="vdkind">초미세먼지</div>
                     <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value}
+                    <span>&nbsp;
                     {
                         currentSelectedDate === timeModules.today
                         ? <span>μg/㎥</span>
                         : ""
                     }
+                    </span>
                     </div>
                     <div className="state microDustState">{currentSelectedDate.pm25Grade}</div>
                     <div className="bottomBar microDustBottombar">
@@ -167,13 +171,13 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
                     slideState === 'commonState'
                     ?
                     <Swiper
-                    spaceBetween={50}      
-                    pagination={
-                        { clickable: true }
-                    }
-                    navigation
-                    onSlideChange={(e) => changeSlide(e.realIndex)}
-                    >
+                        spaceBetween ={50}      
+                        pagination = { 
+                            { clickable: true }
+                            }
+                        navigation
+                        onSlideChange = {(e) => changeSlide(e.realIndex)}
+                        >
                         <SwiperSlide className="slide1">
                             <div className="image-wrapper">
                                 <img src={selectImage(currentSelectedDate.pm10Grade)} className="image"/>
@@ -210,19 +214,44 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
             </section>
 
             <section className="viewDay-wrapper bd-tp con">
-                <div onClick={() => handleOnClick(timeModules.today, 0)} className="today day card">{convertDate(timeModules.today.date)}</div>
-                <div onClick={() => handleOnClick(timeModules.tomorrow, 1)} className="tomorrow day card">{convertDate(timeModules.tomorrow.date)}</div>
-                <div onClick={() => handleOnClick(timeModules.dayAfterTomorrow, 2)} className="dayAfterTomorrow day card">{convertDate(timeModules.dayAfterTomorrow.date)}</div>
-            </section>
-
-            <section className="chart-wrapper">
-                <div className="chart-day">{}</div>
-                <div className="chart">
-                    <div className={visibleChart}>
-                        {MyChart}
-                    </div>
+                 <div onClick={() => handleOnClick(timeModules.today, 0)} className="today day card">
+                     {convertDate(makePureDate(
+                        timeModules.today.date.date.year,
+                        timeModules.today.date.date.month,
+                        timeModules.today.date.date.day,
+                        ))}
+                </div>
+                <div onClick={() => handleOnClick(timeModules.tomorrow, 1)} className="tomorrow day card">
+                    {convertDate(makePureDate(
+                        timeModules.tomorrow.date.date.year,
+                        timeModules.tomorrow.date.date.month,
+                        timeModules.tomorrow.date.date.day,
+                        ))}
+                </div>
+                <div onClick={() => handleOnClick(timeModules.dayAfterTomorrow, 2)} className="dayAfterTomorrow day card">
+                    {convertDate(makePureDate(
+                        timeModules.dayAfterTomorrow.date.date.year,
+                        timeModules.dayAfterTomorrow.date.date.month,
+                        timeModules.dayAfterTomorrow.date.date.day,
+                        ))}
                 </div>
             </section>
+
+            
+            </div>
+
+            <div className="page-wrapper">
+
+                <section className="chart-wrapper">
+                    <div className="chart-day">{}</div>
+                    <div className="chart">
+                        <div className={visibleChart}>
+                            {MyChart}
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
         </main>
     )
 }

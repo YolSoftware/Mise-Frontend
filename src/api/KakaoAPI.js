@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import kakao from './image/kakao.png';
 import logo from './image/logo.png';
 
+import badImage from '../stateImage/bad.png';
+import commonImage from '../stateImage/common.png';
+import goodImage from '../stateImage/good.png';
+import muchBadImage from '../stateImage/muchBad.png';
+
 class KakaoAPI extends Component {
   componentDidMount() {
     window.Kakao.init('40119826bf14cad9393d9a049ce7f876');

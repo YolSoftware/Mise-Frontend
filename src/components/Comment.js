@@ -21,12 +21,12 @@ let commentData = {
 // status 의 값을 받아 와서.. 미세먼지, 초미세, 오존 정보를 받아오자.
 
 
-const Comment = ( pPm10Grade, pPm25Grade, pO3Grade ) => {
+const Comment = ({ pPm10Grade, pPm25Grade, pO3Grade }) => {
 
-    function selectComment(mPm10Grade, mPm25Grade, mO3Grade) {
+    function selectDustComment() {
         let returnComment;
         
-        console.log(mPm10Grade);
+        // console.log(mPm10Grade);
         // console.log(mPm25Grade);
         
         if (pPm10Grade === "매우나쁨" | pPm25Grade === "매우나쁨") {
@@ -41,29 +41,34 @@ const Comment = ( pPm10Grade, pPm25Grade, pO3Grade ) => {
         else if (pPm10Grade === "좋음" | pPm25Grade === "좋음") {
             returnComment = commentData.pmAction.good;
         }
+        return returnComment;
+    }
 
+    function selectO3Comment() {
+        let returnComment;
 
         if (pO3Grade === "매우나쁨") {
-            returnComment = returnComment + commentData.o3Action.muchBad;
+            returnComment = commentData.o3Action.muchBad;
         }
         else if (pO3Grade === "나쁨") {
-            returnComment = returnComment + commentData.o3Action.bad;
+            returnComment = commentData.o3Action.bad;
         }
         else if (pO3Grade === "보통") {
-            returnComment = returnComment + commentData.o3Action.common;
+            returnComment = commentData.o3Action.common;
         }
         else if (pO3Grade === "좋음") {
-            returnComment = returnComment + commentData.o3Action.good;
+            returnComment = commentData.o3Action.good;
         }
 
-        console.log("test" + returnComment);
         return returnComment;
     }
 
     return (
         <div className="comment-wrapper">
             <span className="comment">
-                {selectComment()}
+                {selectDustComment()}
+                <br></br>
+                {selectO3Comment()}
             </span>
         </div>
     )
