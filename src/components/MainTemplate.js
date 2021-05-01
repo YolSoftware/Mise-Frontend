@@ -22,25 +22,47 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
     const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
     const [activeId, setActiveId] = useState(0);
     const [visibleChart, setVisibleChart] = useState('visible');
+    const [slideState, setSlideState] = useState('commonState');
+    const [tempActiveId, setTempActiveId] = useState(0);
 
     function returnProperCss(mGrade) {
         let ret;
-        if (mGrade == "매우나쁨") {
+        if (mGrade === "매우나쁨") {
             ret = "muchBad";
         }
-        else if (mGrade == "나쁨") {
+        else if (mGrade === "나쁨") {
             ret = "bad";
         }
-        else if (mGrade == "보통") {
+        else if (mGrade === "보통") {
             ret = "common";
         }
-        else if (mGrade == "좋음") {
+        else if (mGrade === "좋음") {
             ret = "good";
         }
         else {
             ret = "error";
         }
         return ret;
+    }
+
+    const handleOnClick = (data, index) => {
+        setCurrentSelectedDate(data);
+
+        /*
+        if(slideState !== 'clickButton') {
+            setTempActiveId(activeId);
+        }
+        */
+
+        if(index === 0) {
+            setSlideState('commonState');
+            setVisibleChart('visible');
+            setActiveId(0);
+        } else if(index === 1 || index === 2) {
+            setSlideState('clickButton');
+            setVisibleChart('hidden');
+            setActiveId(1);
+        }
     }
 
     var onClickToday = () => {
@@ -53,16 +75,16 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
 
     var selectImage = (mState) => {
         let ret;
-        if (mState == "매우나쁨") {
+        if (mState === "매우나쁨") {
             ret = stateImages.muchBadImage;
         }
-        else if (mState == "나쁨") {
+        else if (mState === "나쁨") {
             ret = stateImages.badImage;
         }
-        else if (mState == "보통") {
+        else if (mState === "보통") {
             ret = stateImages.commonImage;
         }
-        else if (mState == "좋음") {
+        else if (mState === "좋음") {
             ret = stateImages.goodImage;
         }
         else {
@@ -92,7 +114,7 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
                     <div className="vdkind">미세먼지</div>
                     <div className="expression fineDustExpreesion">{currentSelectedDate.pm10Value}
                     {
-                        currentSelectedDate == timeModules.today
+                        currentSelectedDate === timeModules.today
                         ? <span>μg/㎥</span>
                         : ""
                     }
@@ -108,7 +130,7 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
                     <div className="vdkind">초미세먼지</div>
                     <div className="expression microDustExpreesion">{currentSelectedDate.pm25Value}
                     {
-                        currentSelectedDate == timeModules.today
+                        currentSelectedDate === timeModules.today
                         ? <span>μg/㎥</span>
                         : ""
                     }
@@ -124,7 +146,7 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
                     <div className="vdkind">오존</div>
                     <div className="expression ozoneExpression">{currentSelectedDate.o3Value}
                     {
-                        currentSelectedDate == timeModules.today
+                        currentSelectedDate === timeModules.today
                         ? <span>ppm</span>
                         : ""
                     }
@@ -139,17 +161,41 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
             </section>
 
             <section className="selectedKindExpreesion-wrapper bd-bt">
-                <Swiper
+
+                {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세먼지로 보여줄지 에 대해서 */}
+                {
+                    slideState === 'commonState'
+                    ?
+                    <Swiper
                     spaceBetween={50}      
-                    pagination={{ clickable: true }}  
+                    pagination={
+                        { clickable: true }
+                    }
                     navigation
                     onSlideChange={(e) => changeSlide(e.realIndex)}
                     >
-                        {/* 이부분 추가로 수정해야함. 미세먼지로 보여줄지 초미세먼지로 보여줄지 에 대해서 */}
-                    <SwiperSlide className="slide1"><div className="image-wrapper"><img src={selectImage(currentSelectedDate.pm10Grade)} className="image"/></div></SwiperSlide>
-                    <SwiperSlide className="slide2"><div className="image-wrapper"><img src={selectImage(currentSelectedDate.pm25Grade)} className="image"/></div></SwiperSlide>
-                    <SwiperSlide className="slide3"><div className="image-wrapper"><img src={selectImage(currentSelectedDate.o3Grade)} className="image"/></div></SwiperSlide>
-                </Swiper>
+                        <SwiperSlide className="slide1">
+                            <div className="image-wrapper">
+                                <img src={selectImage(currentSelectedDate.pm10Grade)} className="image"/>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className="slide2">
+                            <div className="image-wrapper">
+                                <img src={selectImage(currentSelectedDate.pm25Grade)} className="image"/>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className="slide3">
+                            <div className="image-wrapper">
+                                <img src={selectImage(currentSelectedDate.o3Grade)} className="image"/>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                    :
+                    <div className="image-wrapper">
+                        <img src={selectImage(currentSelectedDate.pm25Grade)} className="image"/>
+                    </div>
+                }
+
             </section>
             
             <section className="comment-wrapper card con">
@@ -160,13 +206,13 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
                         pPm10Grade = {currentSelectedDate.pm10Grade}
                         pPm25Grade = {currentSelectedDate.pm25Grade}
                         pO3Grade = {currentSelectedDate.o3Grade}
-                        />
+                />
             </section>
 
             <section className="viewDay-wrapper bd-tp con">
-                <div onClick={() => setCurrentSelectedDate(timeModules.today)} className="today day card">{convertDate(timeModules.today.date)}</div>
-                <div onClick={() => setCurrentSelectedDate(timeModules.tomorrow)} className="tomorrow day card">{convertDate(timeModules.tomorrow.date)}</div>
-                <div onClick={() => setCurrentSelectedDate(timeModules.dayAfterTomorrow)} className="dayAfterTomorrow day card">{convertDate(timeModules.dayAfterTomorrow.date)}</div>
+                <div onClick={() => handleOnClick(timeModules.today, 0)} className="today day card">{convertDate(timeModules.today.date)}</div>
+                <div onClick={() => handleOnClick(timeModules.tomorrow, 1)} className="tomorrow day card">{convertDate(timeModules.tomorrow.date)}</div>
+                <div onClick={() => handleOnClick(timeModules.dayAfterTomorrow, 2)} className="dayAfterTomorrow day card">{convertDate(timeModules.dayAfterTomorrow.date)}</div>
             </section>
 
             <section className="chart-wrapper">

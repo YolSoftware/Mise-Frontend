@@ -29,30 +29,30 @@ const Comment = ( pPm10Grade, pPm25Grade, pO3Grade ) => {
         console.log(mPm10Grade);
         // console.log(mPm25Grade);
         
-        if (pPm10Grade == "매우나쁨" | pPm25Grade == "매우나쁨") {
+        if (pPm10Grade === "매우나쁨" | pPm25Grade === "매우나쁨") {
             returnComment = commentData.pmAction.muchBad;
         }
-        else if (pPm10Grade == "나쁨" | pPm25Grade == "나쁨") {
+        else if (pPm10Grade === "나쁨" | pPm25Grade === "나쁨") {
             returnComment = commentData.pmAction.bad;
         }
-        else if (pPm10Grade == "보통" | pPm25Grade == "보통") {
+        else if (pPm10Grade === "보통" | pPm25Grade === "보통") {
             returnComment = commentData.pmAction.common;
         }
-        else if (pPm10Grade == "좋음" | pPm25Grade == "좋음") {
+        else if (pPm10Grade === "좋음" | pPm25Grade === "좋음") {
             returnComment = commentData.pmAction.good;
         }
 
 
-        if (pO3Grade == "매우나쁨") {
+        if (pO3Grade === "매우나쁨") {
             returnComment = returnComment + commentData.o3Action.muchBad;
         }
-        else if (pO3Grade == "나쁨") {
+        else if (pO3Grade === "나쁨") {
             returnComment = returnComment + commentData.o3Action.bad;
         }
-        else if (pO3Grade == "보통") {
+        else if (pO3Grade === "보통") {
             returnComment = returnComment + commentData.o3Action.common;
         }
-        else if (pO3Grade == "좋음") {
+        else if (pO3Grade === "좋음") {
             returnComment = returnComment + commentData.o3Action.good;
         }
 
