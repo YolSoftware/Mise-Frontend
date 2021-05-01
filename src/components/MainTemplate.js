@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../stylesheets/MainTemplate.css';
 import logo from '../api/image/logo.png';
-import classNames from 'classnames';
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination } from 'swiper';
