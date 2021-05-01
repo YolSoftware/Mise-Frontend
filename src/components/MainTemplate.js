@@ -21,12 +21,7 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
 
     const [currentSelectedDate, setCurrentSelectedDate] = useState(timeModules.today);
     const [activeId, setActiveId] = useState(0);
-
-    var nullCheck = (mData) => {
-        if (mData === null | mData === 0) {
-            return "";
-        }
-    }
+    const [visibleChart, setVisibleChart] = useState('visible');
 
     function returnProperCss(mGrade) {
         let ret;
@@ -177,7 +172,9 @@ const MainTemplate = ({ test, timeModules, MyChart, kakao, stateImages, comment 
             <section className="chart-wrapper">
                 <div className="chart-day">{}</div>
                 <div className="chart">
-                    {MyChart}
+                    <div className={visibleChart}>
+                        {MyChart}
+                    </div>
                 </div>
             </section>
         </main>
