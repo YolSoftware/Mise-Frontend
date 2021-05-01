@@ -75,7 +75,6 @@ function App() {
 
 function Users() {
   // 상태 설정
-  var mData;
   const [test, setTest] = useState('');  
   const [dustData, setDustData] = useState("");
   const [apiSuccess, setApiSuccess] = useState(false);
@@ -83,7 +82,7 @@ function Users() {
   const fetchDatas = async () => {
     //setDustData(TimeModules);
 
-    console.log("123");
+    console.log("Print dustData:");
     console.log(dustData);
     console.log("123");
 
@@ -141,7 +140,7 @@ function Users() {
       >
       </MainTemplate>
         :
-        ""
+        "Api Loading"
       }
     </div>
   );
