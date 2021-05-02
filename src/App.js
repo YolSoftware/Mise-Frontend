@@ -107,7 +107,7 @@ function Users() {
   return (
     <MainTemplate
       timeModules = {TimeModules}
-      MyChart = {<MyChart  />}
+      MyChart = {<MyChart />}
       // dustData = {dustData}
       kakao = {<KakaoAPI />}
       stateImages = {stateImages}
