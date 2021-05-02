@@ -40,9 +40,6 @@ body, ul, li {
 .mainTemplate {
     width: 100%;
     height: auto;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .topbar-wrapper {
@@ -166,12 +163,16 @@ body, ul, li {
 .selectedKindExpreesion-wrapper {    
     margin-top: 10px;
     width: 100%;
-    height: 33%;
+    height: 40%;
 }
 
-.selectedKindExpreesion-wrapper .swiper-container {
+
+
+.selectedKindExpreesion-wrapper .swiper-container,
+.selectedKindExpreesion-wrapper .image-wrapper {
     width: 100%;
     height: 100%;
+    display: flex;
 }
 
 .selectedKindExpreesion-wrapper .swiper-container .swiper-button-prev.swiper-button-disabled,
@@ -179,11 +180,16 @@ body, ul, li {
     display:none;
 }
 
-.selectedKindExpreesion-wrapper .swiper-container .swiper-slide {
+.selectedKindExpreesion-wrapper .swiper-container .swiper-slide,
+.selectedKindExpreesion-wrapper .image-wrapper {
     display:flex;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.selectedKindExpreesion-wrapper .image-wrapper {
+    margin: 0 auto;
 }
 
 .selectedKindExpreesion-wrapper .swiper-container .swiper-pagination-bullet-active {
@@ -234,7 +240,7 @@ body, ul, li {
 .chart-wrapper {
     width: 100%;
     height: 30%;
-    margin-top: 65px;
+    margin-top: auto;
 }
 
 .chart-day {
@@ -264,7 +270,7 @@ body, ul, li {
 }
 
 /* 하단부분 */
-
+/*
 .footer-wrapper {
     width: 100%;
     height: 300px;
@@ -357,3 +363,8 @@ body, ul, li {
     height: 50px;
     border-radius: 50%;
 }
+
+.page-wrapper {
+    height: 100vh;
+}
+*/

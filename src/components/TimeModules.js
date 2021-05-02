@@ -1,53 +1,68 @@
 // dummy data
 
-var TimeModules = {
-    stationAddress : 1000,
-    stationShortAddress : 2000,
-    today : {
-        date: new Date(),
-
-        so2Grade : "좋음",
-        so2Flag : null,
-        so2Value : 1,
-
-        coGrade : "보통",
-        coFlag : null,
-        coValue : 2,
-
-        // 미세먼지
-        pm10Grade : "나쁨",
-        pm10Flag : null,
-        pm10Value : 3,
-
-        // 초미세먼지
-        pm25Grade : "매우나쁨",
-        pm25Flag : null,
-        pm25Value : 4,
-
-        no2Grade : "좋음",
-        no2Flag : null,
-        no2Value : 5,
-
-        o3Grade : "보통",
-        o3Flag : null,
-        o3Value : 6,
-
-        khaiValue : 7,
-        khaiGrade : "좋음",
-
-        measureDate : new Date()
+var timeModules = {
+    "stationAddress": "부산 영도구 전망로 24태종대유원지관리사무소 3층",
+    "today": {
+        "so2Grade": "좋음",
+        "so2Value": 0.002,
+        "coGrade": "좋음",
+        "coValue": 0.2,
+        "pm10Grade": "보통",
+        "pm10Value": 40,
+        "pm25Grade": "좋음",
+        "pm25Value": 8,
+        "no2Grade": "좋음",
+        "no2Value": 0.009,
+        "o3Grade": "보통",
+        "o3Value": 0.057,
+        "khaiValue": 0,
+        "date": {
+            "date": {
+                "year": 2021,
+                "month": 5,
+                "day": 1
+            },
+            "time": {
+                "hour": 1,
+                "minute": 0,
+                "second": 0,
+                "nano": 0
+            }
+        }
     },
-    tomorrow : {
-        date: new Date(new Date().setDate(new Date().getDate() + 1)),
-        pm25Grade : "좋음"
-        // pm25Value : 20
+    "tomorrow": {
+        "date": {
+            "date": {
+                "year": 2021,
+                "month": 5,
+                "day": 2
+            },
+            "time": {
+                "hour": 1,
+                "minute": 0,
+                "second": 0,
+                "nano": 0
+            }
+        },
+        "pm25Grade": "나쁨"
     },
-
-    dayAfterTomorrow : {
-        date: new Date(new Date().setDate(new Date().getDate() + 2)),
-        pm25Grade : "나쁨"
-        // pm25Value : 100
+    "dayAfterTomorrow": {
+        "date": {
+            "date": {
+                "year": 2021,
+                "month": 5,
+                "day": 3
+            },
+            "time": {
+                "hour": 1,
+                "minute": 0,
+                "second": 0,
+                "nano": 0
+            }
+        },
+        "pm25Grade": "좋음"
     }
 }
 
-export default TimeModules;
+
+export default timeModules;
