@@ -1,10 +1,11 @@
 .comment-wrapper {
-    width: 92.5%;
-    height: 80px;
+    width: 90%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 3% auto;
 }
 
 .comment {

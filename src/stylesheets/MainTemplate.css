@@ -1,7 +1,7 @@
 /* 기본설정 */
 
 html {
-    width: 100%;
+    width: auto;
 }
 
 body, ul, li {
@@ -11,8 +11,8 @@ body, ul, li {
 /* 라이브러리 */
 
 .con {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
@@ -26,10 +26,12 @@ body, ul, li {
 }
 
 .bd-bt {
+    width: 100%;
     border-bottom: 8px solid rgb(243, 244, 245);
 }
 
 .bd-tp {
+    width: 100%;
     border-top: 8px solid rgb(243, 244, 245);
 }
 
@@ -38,6 +40,7 @@ body, ul, li {
 /* 탑바 */
 
 .mainTemplate {
+    min-width: 360px;
     width: 100%;
     height: auto;
 }
@@ -56,44 +59,62 @@ body, ul, li {
 .title {    
     font-size: 28px;
     font-weight: bold;
+    margin: 0 auto;
 }
 
 .share {
     margin-top: 5px;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 .share #kakao-link-btn {
     outline: 0;
     border: 0;
     background-color: white;
+    margin: 0 auto;
 }
 
 .menu {
     margin-top: 5px;
-    margin-right: 5px;
+    margin: 0 auto;
 }
 
 /* 데이터 3개 보여주는 부분 */
 
+@media (max-width: 740px) {
+    .vd-border,
+    .day {
+        margin-left: 2%;
+        margin-right: 4%;
+    }
+}
+
+@media (min-width: 741px) {
+    .vd-border,
+    .day {
+        margin: 0 2%;
+    }
+}
+
 .viewData-wrapper {
     display:flex;
-    justify-content: space-between;    
+    justify-content: space-between;
     margin-top: 10px;
     width: 100%;
+    font-size: 16px;
 }
 
 .vd-border {
-    width: 85px;
+    width: calc(90% / 3);
     height: 80px;
+    margin-bottom: 10px;
 }
 
 .vdkind {
     text-align: center;
     width: 100%;
-    font-weight: 700;  
-    font-size: 16px;  
-
+    font-weight: 700;
 }
 
 .expression {
@@ -110,29 +131,17 @@ body, ul, li {
 }
 
 .bottomBar {
-    margin-left: -12px;    
     width: 125%;
-    height: 14px;    
+    height: 15%;
     position: relative;
     border-radius: 16px;
-}
-
-.bottomBar.active::after {
-    position: absolute;
-    content: '';
-    top: 10px;
-    left: 0;
-    width: 102%;
-    height: 10px;
-    background-color: red;
 }
 
 .bottomBar .muchBad,
 .bottomBar .bad,
 .bottomBar .common,
 .bottomBar .good {
-    margin-left: 10.5%;
-    margin-top: 4%;
+    margin-top: 5px;
     width: 80%;
     height: 50%;
 }
@@ -204,8 +213,8 @@ body, ul, li {
 /* 코멘트 나오는 곳 */
 
 .comment-wrapper {    
-    margin: 15px 0;
-    height: 3%;
+    margin: 15% 0;
+    height: 15%;
     background-color: #e9e9e9;
 }
 
@@ -224,7 +233,7 @@ body, ul, li {
 }
 
 .day {    
-    width: 100px;
+    width: calc(90% / 3);
     height: 40px;
     text-align: center;
     font-size: 12px;    
@@ -232,7 +241,6 @@ body, ul, li {
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-    margin: 0 3px;
 }
 
 /* 육각형 */
